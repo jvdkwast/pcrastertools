@@ -12,7 +12,7 @@ def convert(pattern,outputprefix):
     count = 0
     inputFiles = glob.glob(pattern)
     inputFiles.sort()
-    print "\nConverting files to PCRaster format",
+    print("\nConverting files to PCRaster format", end=" ")
     for inputFile in inputFiles:
         count += 1
         sys.stdout.write('.')
@@ -29,7 +29,7 @@ def rename(pattern,outputprefix, offset):
     inputFiles.sort()
     for inputFile in inputFiles:
         count += 1
-        print "converting file", count, " " + inputFile
+        print("converting file", count, " " + inputFile)
         if count + offset < 10:
             extension = "00" + str(count + offset)
         else:
@@ -40,7 +40,7 @@ def resample(pattern,outputprefix,cloneName):
     count = 0
     inputFiles = glob.glob(pattern)
     inputFiles.sort()
-    print "\nResampling files",
+    print ("\nResampling files", end=" ")
     for inputFile in inputFiles:
         count += 1
         sys.stdout.write('.')
@@ -51,5 +51,4 @@ def resample(pattern,outputprefix,cloneName):
         cmd = "resample " + inputFile + " " + outputprefix + "." + extension + " --clone " + cloneName
         os.system(cmd)
         
-
-        
+convert("*.rst","lu000000")        
